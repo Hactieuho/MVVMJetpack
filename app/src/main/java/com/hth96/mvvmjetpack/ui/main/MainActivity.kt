@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-
+        viewModel.fetchUsers()
     }
 
     private fun observeViewModel() {

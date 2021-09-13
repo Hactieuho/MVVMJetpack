@@ -17,4 +17,6 @@ data class User (
 
     @Json(name = "avatar")
     var avatar: String? = null
-)
+) {
+    fun fullName() = "$firstName $lastName"
+}

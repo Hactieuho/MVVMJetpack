@@ -1,7 +1,7 @@
 package com.hth96.mvvmjetpack.di
 
 import com.hth96.mvvmjetpack.api.NullOnEmptyConverterFactory
-import com.hth96.mvvmjetpack.api.RubbishService
+import com.hth96.mvvmjetpack.api.ReqresService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -26,14 +26,14 @@ object RetrofitModule {
     fun provideRubbishService(
         @BaseUrl baseUrl: String,
         moshi: Moshi,
-        httpClient: OkHttpClient.Builder) : RubbishService {
+        httpClient: OkHttpClient.Builder) : ReqresService {
         val retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .addConverterFactory(NullOnEmptyConverterFactory())
             .client(httpClient.build())
             .build()
-        return retrofit.create(RubbishService::class.java)
+        return retrofit.create(ReqresService::class.java)
     }
 
     @Provides
