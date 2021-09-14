@@ -1,4 +1,4 @@
-package com.hth96.mvvmjetpack.ui.adapter
+package com.hth96.mvvmjetpack.ui.adapter.user
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

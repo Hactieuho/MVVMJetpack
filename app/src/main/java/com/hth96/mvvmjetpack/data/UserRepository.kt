@@ -24,7 +24,7 @@ class UserRepository @Inject constructor(
     val ioScope = CoroutineScope(Dispatchers.IO + job)
 
     // Get user list
-    fun getUsers() {
+    fun fetchUsers() {
         getUsersResult.postValue(Resource.Loading("Getting user list", getUsersResult.value?.data))
         ioScope.launch {
             try {
