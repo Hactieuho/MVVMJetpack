@@ -17,7 +17,7 @@ class UserRepository @Inject constructor(
     private val userService: UserService
 ) {
 
-    // Lay danh sach town city
+    // Lay danh sach user
     val getUsersResult = MutableLiveData<Resource<List<User?>?>>()
 
     val job = Job()
