@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.hth96.mvvmjetpack"
-        minSdk 21
+        minSdk 23
         targetSdk 30
         versionCode 1
         versionName "1.0"
@@ -85,4 +85,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
     // Swipe refresh layout
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    // Adapter helper
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.6'
 }

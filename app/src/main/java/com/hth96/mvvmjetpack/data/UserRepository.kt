@@ -37,14 +37,20 @@ class UserRepository @Inject constructor(
     val ioScope = CoroutineScope(Dispatchers.IO + job)
 
     // Get user list
-    fun fetchUsers() {
+    fun fetchUsers(currentPage: Int? = 1) {
         getUsersResult.postValue(Resource.Loading("Getting user list", getUsersResult.value?.data))
         ioScope.launch {
             try {
-                val result = userService.getUsers()
+                val result = userService.getUsers(currentPage)
                 if (result.isSuccessful && !result.body()?.data.isNullOrEmpty()) {
-                    // Luu lai danh sach town city
-                    getUsersResult.postValue(Resource.Success(result.body()?.data))
+                    // Luu lai danh sach town city hoac load more
+                    if (currentPage != null && currentPage > 1) {
+                        val listUserResult = result.body()?.data as ArrayList?
+                        (getUsersResult.value?.data as ArrayList? ?: arrayListOf()).addAll(listUserResult?: arrayListOf())
+                        getUsersResult.postValue(Resource.Success(getUsersResult.value?.data))
+                    } else {
+                        getUsersResult.postValue(Resource.Success(result.body()?.data))
+                    }
                 } else {
                     handleError(getUsersResult, "No user founds!")
                 }

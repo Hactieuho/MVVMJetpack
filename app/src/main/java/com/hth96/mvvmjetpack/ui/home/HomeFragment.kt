@@ -1,9 +1,11 @@
 package com.hth96.mvvmjetpack.ui.home
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -29,6 +31,10 @@ class HomeFragment @Inject constructor() : Fragment() {
     }
 
     private fun initUI() {
+        viewModel.fetchUsers(userAdapter.currentPage)
+        userAdapter.setupRecyclerViewLoadMore(binding.rvUserList) {
+            viewModel.fetchUsers(userAdapter.currentPage + 1)
+        }
     }
 
     private fun observeViewModel() {

@@ -9,5 +9,5 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     val userRepository: UserRepository
 ) : ViewModel() {
-    fun fetchUsers() = userRepository.fetchUsers()
+    fun fetchUsers(currentPage: Int? = 1) = userRepository.fetchUsers(currentPage)
 }
