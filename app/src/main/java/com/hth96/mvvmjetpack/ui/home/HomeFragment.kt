@@ -9,14 +9,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.hth96.mvvmjetpack.R
 import com.hth96.mvvmjetpack.databinding.FragmentHomeBinding
+import com.hth96.mvvmjetpack.ui.adapter.user.UserAdapter
 import com.hth96.mvvmjetpack.ui.main.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment @Inject constructor() : Fragment() {
-    lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentHomeBinding
     val viewModel: MainViewModel by activityViewModels()
+
+    @Inject lateinit var userAdapter: UserAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
@@ -30,6 +33,7 @@ class HomeFragment @Inject constructor() : Fragment() {
 
     private fun observeViewModel() {
         binding.viewModel = viewModel
+        binding.userAdapter = userAdapter
         binding.lifecycleOwner = this
     }
 }

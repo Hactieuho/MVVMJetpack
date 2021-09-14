@@ -2,18 +2,16 @@ package com.hth96.mvvmjetpack.ui.adapter.user
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.ListAdapter
 import com.hth96.mvvmjetpack.databinding.ItemUserBinding
 import com.hth96.mvvmjetpack.model.User
 import com.hth96.mvvmjetpack.ui.adapter.diffutil.UserDiffCallback
 import com.hth96.mvvmjetpack.ui.adapter.viewholder.DataBindingViewHolder
-import com.hth96.mvvmjetpack.ui.main.MainActivity
-import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
-@ViewModelScoped
 class UserAdapter @Inject constructor(
-    private val context: MainActivity,
+    private val context: FragmentActivity,
     diffCallback: UserDiffCallback) : ListAdapter<User, DataBindingViewHolder>(diffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataBindingViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

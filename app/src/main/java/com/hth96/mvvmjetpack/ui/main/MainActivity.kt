@@ -1,16 +1,15 @@
 package com.hth96.mvvmjetpack.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.hth96.mvvmjetpack.R
 import com.hth96.mvvmjetpack.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity @Inject constructor() : AppCompatActivity() {
+class MainActivity: AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<MainViewModel>()
 

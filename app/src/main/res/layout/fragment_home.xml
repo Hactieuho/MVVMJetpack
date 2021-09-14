@@ -7,6 +7,9 @@
         <variable
             name="viewModel"
             type="com.hth96.mvvmjetpack.ui.main.MainViewModel" />
+        <variable
+            name="userAdapter"
+            type="com.hth96.mvvmjetpack.ui.adapter.user.UserAdapter" />
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -21,7 +24,7 @@
             android:orientation="vertical"
             tools:listitem="@layout/item_user"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:userAdapter="@{viewModel.userAdapter}"
+            app:userAdapter="@{userAdapter}"
             app:userList="@{viewModel.userRepository.getUsersResult.data}"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>
