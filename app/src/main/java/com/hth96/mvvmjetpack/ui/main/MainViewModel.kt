@@ -1,13 +1,13 @@
 package com.hth96.mvvmjetpack.ui.main
 
 import androidx.lifecycle.ViewModel
-import com.hth96.mvvmjetpack.data.ReqresRepository
+import com.hth96.mvvmjetpack.data.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    val reqresRepository: ReqresRepository
+    val userRepository: UserRepository
 ) : ViewModel() {
-    fun fetchUsers() = reqresRepository.getUsers()
+    fun fetchUsers() = userRepository.getUsers()
 }

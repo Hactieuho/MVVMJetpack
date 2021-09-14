@@ -1,7 +1,7 @@
 package com.hth96.mvvmjetpack.data
 
 import androidx.lifecycle.MutableLiveData
-import com.hth96.mvvmjetpack.api.ReqresService
+import com.hth96.mvvmjetpack.api.UserService
 import com.hth96.mvvmjetpack.model.User
 import com.hth96.mvvmjetpack.resource.Resource
 import com.hth96.mvvmjetpack.util.handleError
@@ -13,8 +13,8 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ReqresRepository @Inject constructor(
-    private val reqresService: ReqresService
+class UserRepository @Inject constructor(
+    private val userService: UserService
 ) {
 
     // Lay danh sach town city
@@ -28,7 +28,7 @@ class ReqresRepository @Inject constructor(
         getUsersResult.postValue(Resource.Loading("Getting user list", getUsersResult.value?.data))
         ioScope.launch {
             try {
-                val result = reqresService.getUsers()
+                val result = userService.getUsers()
                 if (result.isSuccessful && !result.body()?.data.isNullOrEmpty()) {
                     // Luu lai danh sach town city
                     getUsersResult.postValue(Resource.Success(result.body()?.data?.filter { s ->
