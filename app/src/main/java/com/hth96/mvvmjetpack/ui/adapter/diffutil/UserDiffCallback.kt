@@ -1,14 +1,14 @@
 package com.hth96.mvvmjetpack.ui.adapter.diffutil
 
 import androidx.recyclerview.widget.DiffUtil
-import com.hth96.mvvmjetpack.model.User
+import com.hth96.mvvmjetpack.ui.adapter.item.RecyclerItemEntity
 import javax.inject.Inject
 
-class UserDiffCallback @Inject constructor() : DiffUtil.ItemCallback<User>() {
-    override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
-        return oldItem.id == newItem.id
+class UserDiffCallback @Inject constructor() : DiffUtil.ItemCallback<RecyclerItemEntity>() {
+    override fun areItemsTheSame(oldItem: RecyclerItemEntity, newItem: RecyclerItemEntity): Boolean {
+        return oldItem.data == newItem.data
     }
-    override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
+    override fun areContentsTheSame(oldItem: RecyclerItemEntity, newItem: RecyclerItemEntity): Boolean {
         return oldItem == newItem
     }
 }

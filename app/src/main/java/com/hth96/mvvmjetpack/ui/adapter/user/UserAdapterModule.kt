@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.hth96.mvvmjetpack.model.User
+import com.hth96.mvvmjetpack.ui.adapter.item.RecyclerItemEntity
 
 @BindingAdapter("app:userAvatar")
 fun AppCompatImageView.userAvatar(url: String?) {
@@ -21,7 +22,7 @@ fun AppCompatImageView.userAvatar(url: String?) {
 }
 
 @BindingAdapter("app:userAdapter", "app:userList")
-fun RecyclerView.userAdapter(userAdapter: UserAdapter?, userList: List<User>?) {
+fun RecyclerView.userAdapter(userAdapter: UserAdapter?, userList: List<RecyclerItemEntity>?) {
     val linearLayoutManager = LinearLayoutManager(context)
     linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
     layoutManager = linearLayoutManager

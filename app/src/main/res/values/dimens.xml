@@ -8,5 +8,6 @@
     <dimen name="base_16dp">16dp</dimen>
     <dimen name="base_20dp">20dp</dimen>
     <dimen name="base_24dp">24dp</dimen>
+    <dimen name="base_loading_size">40dp</dimen>
     <dimen name="base_avatar_size">64dp</dimen>
 </resources>
