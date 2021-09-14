@@ -1,19 +1,17 @@
 package com.hth96.mvvmjetpack.util
 
-import android.content.SharedPreferences
-import android.widget.Button
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.content.edit
 import androidx.databinding.BindingAdapter
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.blankj.utilcode.util.ToastUtils
 import com.bumptech.glide.Glide
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.hth96.mvvmjetpack.R
+import com.hth96.mvvmjetpack.model.User
 import com.hth96.mvvmjetpack.resource.Resource
-import java.text.SimpleDateFormat
+import com.hth96.mvvmjetpack.ui.adapter.UserAdapter
 import java.util.*
 
 fun<T: Any?> handleError(
@@ -25,8 +23,23 @@ fun<T: Any?> handleError(
 
 @BindingAdapter("app:userAvatar")
 fun AppCompatImageView.userAvatar(url: String?) {
+    val circularProgressDrawable = CircularProgressDrawable(context)
+    circularProgressDrawable.strokeWidth = 5f
+    circularProgressDrawable.centerRadius = 30f
+    circularProgressDrawable.start()
     Glide.with(context)
         .load(url)
-        .placeholder(R.drawable.loading)
+        .placeholder(circularProgressDrawable)
         .into(this)
+}
+
+@BindingAdapter("app:userAdapter", "app:userList")
+fun RecyclerView.userAdapter(userAdapter: UserAdapter?, userList: List<User>?) {
+    if (adapter == null) {
+        val linearLayoutManager = LinearLayoutManager(context)
+        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        layoutManager = linearLayoutManager
+        adapter = userAdapter
+    }
+    userAdapter?.submitList(userList)
 }

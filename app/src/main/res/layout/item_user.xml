@@ -17,7 +17,7 @@
             android:id="@+id/iv_user_avatar"
             android:layout_width="@dimen/base_avatar_size"
             android:layout_height="@dimen/base_avatar_size"
-            app:userAvatar="@{viewModel.email}"
+            app:userAvatar="@{viewModel.avatar}"
             tools:src="@drawable/user_dummy"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

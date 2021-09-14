@@ -31,8 +31,7 @@ class UserRepository @Inject constructor(
                 val result = userService.getUsers()
                 if (result.isSuccessful && !result.body()?.data.isNullOrEmpty()) {
                     // Luu lai danh sach town city
-                    getUsersResult.postValue(Resource.Success(result.body()?.data?.filter { s ->
-                        s.fullName().isNotEmpty() && !s.fullName().contentEquals("town_city") }))
+                    getUsersResult.postValue(Resource.Success(result.body()?.data))
                 } else {
                     handleError(getUsersResult, "No user founds!")
                 }

@@ -7,9 +7,10 @@ import androidx.databinding.DataBindingUtil
 import com.hth96.mvvmjetpack.R
 import com.hth96.mvvmjetpack.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity @Inject constructor() : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<MainViewModel>()
 

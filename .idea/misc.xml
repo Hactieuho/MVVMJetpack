@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/Projects/MVVMJetpack/app/src/main/res/drawable/loading.xml" value="0.15989583333333332" />
         <entry key="..\:/Android/Projects/MVVMJetpack/app/src/main/res/layout/activity_main.xml" value="0.12" />
         <entry key="..\:/Android/Projects/MVVMJetpack/app/src/main/res/layout/fragment_home.xml" value="0.13854166666666667" />
         <entry key="..\:/Android/Projects/MVVMJetpack/app/src/main/res/layout/item_user.xml" value="0.2" />
