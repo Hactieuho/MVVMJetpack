@@ -9,15 +9,13 @@
             type="com.hth96.mvvmjetpack.ui.main.MainViewModel" />
         <variable
             name="userAdapter"
-            type="com.hth96.mvvmjetpack.ui.adapter.user.UserAdapter" />
+            type="com.hth96.mvvmjetpack.ui.adapter.user.BaseUserAdapter" />
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/sw_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:onRefresh="@{()->viewModel.fetchUsers(1)}"
-        app:isRefreshing="@{userAdapter}">
+        android:layout_height="match_parent">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_user_list"
             android:layout_width="match_parent"
@@ -26,6 +24,6 @@
             tools:listitem="@layout/item_user"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:userAdapter="@{userAdapter}"
-            app:userList="@{viewModel.userRepository.userEntityList}"/>
+            app:userList="@{viewModel.userRepository.getUsersResult.data}"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>
