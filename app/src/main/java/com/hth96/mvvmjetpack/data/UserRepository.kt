@@ -39,7 +39,7 @@ class UserRepository @Inject constructor(
                         getUsersResult.postValue(Resource.Success(result.body()?.data))
                     }
                 } else {
-                    getUsersResult.postValue(Resource.Success(getUsersResult.value?.data, NO_MORE_USER))
+                    handleError(getUsersResult, NO_MORE_USER)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

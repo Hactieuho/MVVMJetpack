@@ -37,18 +37,18 @@ class BaseUserAdapter @Inject constructor (
         resultCallback?.observe(activity) {
             if (it.isSuccess()) {
                 swipeRefreshLayout?.isRefreshing = false
+                loadMoreModule.loadMoreComplete()
+                // Enable load more after refresh
+                loadMoreModule.isEnableLoadMore = true
+                // Load more success, next page
+                nextPage()
+            } else if (it.isError()) {
+                swipeRefreshLayout?.isRefreshing = false
                 if (it.message.equals(UserRepository.NO_MORE_USER)) {
                     loadMoreModule.loadMoreEnd()
                 } else {
-                    loadMoreModule.loadMoreComplete()
-                    // Enable load more after refresh
-                    loadMoreModule.isEnableLoadMore = true
-                    // Load more success, next page
-                    nextPage()
+                    loadMoreModule.loadMoreFail()
                 }
-            } else if (it.isError()) {
-                swipeRefreshLayout?.isRefreshing = false
-                loadMoreModule.loadMoreFail()
             }
         }
         swipeRefreshLayout?.isRefreshing = false
