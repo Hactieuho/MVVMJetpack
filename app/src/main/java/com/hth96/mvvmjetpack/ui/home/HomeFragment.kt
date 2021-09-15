@@ -38,6 +38,5 @@ class HomeFragment @Inject constructor() : Fragment() {
         binding.viewModel = viewModel
         binding.userAdapter = userAdapter
         binding.lifecycleOwner = this
-        viewModel.fetchUsers()
     }
 }

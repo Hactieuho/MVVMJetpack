@@ -51,7 +51,9 @@ class BaseUserAdapter @Inject constructor (
                 }
             }
         }
-        swipeRefreshLayout?.isRefreshing = false
+        // First time request
+        swipeRefreshLayout?.isRefreshing = true
+        callRequest(currentPage)
         // Set on refresh listener
         swipeRefreshLayout?.setOnRefreshListener {
             refresh(callRequest)
