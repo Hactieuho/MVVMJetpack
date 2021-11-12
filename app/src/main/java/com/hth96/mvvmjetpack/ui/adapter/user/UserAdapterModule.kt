@@ -7,6 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.hth96.mvvmjetpack.model.User
+import com.hth96.mvvmjetpack.ui.adapter.diffutil.DiffDemoCallback
+
+
+
 
 @BindingAdapter("app:userAvatar")
 fun AppCompatImageView.userAvatar(url: String?) {
@@ -26,10 +30,10 @@ fun RecyclerView.userAdapter(userAdapter: BaseUserAdapter?, userList: List<User>
         val linearLayoutManager = LinearLayoutManager(context)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         layoutManager = linearLayoutManager
+        userAdapter?.setDiffCallback(DiffDemoCallback())
         adapter = userAdapter
     }
-//    userAdapter?.data = userList?.toMutableList() ?: mutableListOf()
     if (userAdapter?.data != userList) {
-        userAdapter?.setList(userList)
+        userAdapter?.setDiffNewData(userList?.toMutableList())
     }
 }

@@ -1,4 +1,4 @@
-package com.hth96.mvvmjetpack.ui.adapter
+package com.hth96.mvvmjetpack.ui.adapter.pager
 
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
