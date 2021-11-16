@@ -24,7 +24,7 @@ annotation class BaseUrl
 object RetrofitModule {
     @Provides
     @Singleton
-    fun provideRubbishService(
+    fun provideUserService(
         @BaseUrl baseUrl: String,
         moshi: Moshi,
         httpClient: OkHttpClient.Builder,
