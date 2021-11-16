@@ -27,11 +27,12 @@ object RetrofitModule {
     fun provideRubbishService(
         @BaseUrl baseUrl: String,
         moshi: Moshi,
-        httpClient: OkHttpClient.Builder) : UserService {
+        httpClient: OkHttpClient.Builder,
+        nullOnEmptyConverterFactory: NullOnEmptyConverterFactory) : UserService {
         val retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .addConverterFactory(NullOnEmptyConverterFactory())
+            .addConverterFactory(nullOnEmptyConverterFactory)
             .client(httpClient.build())
             .build()
         return retrofit.create(UserService::class.java)
