@@ -26,14 +26,10 @@ fun AppCompatImageView.userAvatar(url: String?) {
 
 @BindingAdapter("app:userAdapter", "app:userList")
 fun RecyclerView.userAdapter(userAdapter: BaseUserAdapter?, userList: List<User>?) {
-    if (adapter == null) {
-        val linearLayoutManager = LinearLayoutManager(context)
-        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-        layoutManager = linearLayoutManager
-        userAdapter?.setDiffCallback(DiffDemoCallback())
-        adapter = userAdapter
-    }
-    if (userAdapter?.data != userList) {
-        userAdapter?.setDiffNewData(userList?.toMutableList())
-    }
+    val linearLayoutManager = LinearLayoutManager(context)
+    linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+    layoutManager = linearLayoutManager
+    setHasFixedSize(true)
+    userAdapter?.data = userList?.toMutableList() ?: mutableListOf()
+    adapter = userAdapter
 }
