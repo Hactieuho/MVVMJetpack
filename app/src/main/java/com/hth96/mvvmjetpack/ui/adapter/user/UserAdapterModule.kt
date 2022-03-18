@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.hth96.mvvmjetpack.model.User
-import com.hth96.mvvmjetpack.ui.adapter.diffutil.DiffDemoCallback
 
 @BindingAdapter("app:userAvatar")
 fun AppCompatImageView.userAvatar(url: String?) {
